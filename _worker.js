@@ -26,7 +26,7 @@ async function handleIntake(request, env) {
   if (!name || !/^\S+@\S+\.\S+$/.test(email)) return json({ ok: false, error: 'name and email required' }, 400);
 
   const [first, ...rest] = name.split(/\s+/);
-  const listIds = env.BREVO_LIST_ID ? [Number(env.BREVO_LIST_ID)] : undefined;
+  const listIds = env.BREVO_LIST_ID ? [Number(env.BREVO_LIST_ID)] : 3;
 
   // 1) Create or update the contact in Brevo
   const full = { FIRSTNAME: first, LASTNAME: rest.join(' '), BUSINESS: val(d.business), LINKEDIN: val(d.linkedin),
